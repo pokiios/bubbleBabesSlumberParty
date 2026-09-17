@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://c8k40qedxtwef"]
+
+[ext_resource type="Texture2D" uid="uid://1k4g2eq4014f" path="res://SpriteResources/PROTO-playervisual.png" id="1_037ip"]
+[ext_resource type="Script" uid="uid://bdel0jme7lmkp" path="res://Scripts/player_piece.gd" id="1_ruxid"]
+
+[node name="PlayerPiece" type="Node3D" unique_id=261297020]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+script = ExtResource("1_ruxid")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1337754896]
+billboard = 1
+render_priority = 1
+texture = ExtResource("1_037ip")
+
+[node name="LerpTo" type="Marker3D" parent="." unique_id=1314909240]
