@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://cx7dj2nc4f35u"]
+
+[ext_resource type="Texture2D" uid="uid://f2i0ehgnhlcs" path="res://Assets/TEMP/Character/chr_body.png" id="1_nnusm"]
+[ext_resource type="Script" uid="uid://qwi5dro47pgl" path="res://Scripts/CharacterCustomiser.gd" id="1_ve3u7"]
+[ext_resource type="Texture2D" uid="uid://c7htjfp0fleh8" path="res://Assets/TEMP/UI/UI_arrow_left.png" id="2_g2g4n"]
+[ext_resource type="Texture2D" uid="uid://bqoxfyvfvmqid" path="res://Assets/TEMP/UI/UI_arrow_right.png" id="3_fli7v"]
+[ext_resource type="Shader" uid="uid://uus5l5fhi6xt" path="res://Assets/Shaders/colourBlendShader.gdshader" id="4_fli7v"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sm46s"]
+shader = ExtResource("4_fli7v")
+shader_parameter/my_color = Color(0.5, 0.5, 0.5, 1)
+
+[node name="Control" type="Control" unique_id=1950969670]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+script = ExtResource("1_ve3u7")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=2143832837]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -258.0
+offset_right = 258.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="ButtonLeft" type="Button" parent="HBoxContainer" unique_id=636023276]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+icon = ExtResource("2_g2g4n")
+flat = true
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer" unique_id=1631177617]
+layout_mode = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_right = 200
+
+[node name="Container" type="BoxContainer" parent="HBoxContainer" unique_id=2072162032]
+layout_mode = 2
+
+[node name="ButtonRight" type="Button" parent="HBoxContainer" unique_id=1339747060]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+icon = ExtResource("3_fli7v")
+flat = true
+
+[node name="ChrBody" type="Sprite2D" parent="." unique_id=1279623428]
+material = SubResource("ShaderMaterial_sm46s")
+position = Vector2(576, 320)
+scale = Vector2(0.62109375, 0.62109375)
+texture = ExtResource("1_nnusm")
+
+[connection signal="pressed" from="HBoxContainer/ButtonLeft" to="." method="_on_button_left_pressed"]
+[connection signal="pressed" from="HBoxContainer/ButtonRight" to="." method="_on_button_right_pressed"]
