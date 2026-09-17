@@ -14,6 +14,10 @@ config/name="Bubble Babes Slumber Party"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+CharacterManager="*uid://b4tlk5ak0sgfl"
+
 [display]
 
 window/stretch/mode="canvas_items"
