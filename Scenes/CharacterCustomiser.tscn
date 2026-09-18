@@ -8,7 +8,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sm46s"]
 shader = ExtResource("4_fli7v")
-shader_parameter/my_color = Color(0.5019608, 0.5019608, 0.5019608, 1)
+shader_parameter/my_colour = Color(0.5, 0.5, 0.5, 1)
 
 [node name="Control" type="Control" unique_id=1950969670]
 layout_mode = 3
@@ -21,34 +21,58 @@ size_flags_horizontal = 6
 size_flags_vertical = 6
 script = ExtResource("1_ve3u7")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=2143832837]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=596434912]
 layout_mode = 1
-anchors_preset = 13
-anchor_left = 0.5
-anchor_right = 0.5
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -258.0
-offset_right = 258.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=305411433]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 metadata/_edit_use_anchors_ = true
 
-[node name="ButtonLeft" type="Button" parent="HBoxContainer" unique_id=636023276]
+[node name="ButtonLeft" type="Button" parent="VBoxContainer/HBoxContainer2" unique_id=1618577350]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 icon = ExtResource("2_g2g4n")
 flat = true
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer" unique_id=1631177617]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer2" unique_id=1114791427]
 layout_mode = 2
 theme_override_constants/margin_left = 200
 theme_override_constants/margin_right = 200
 
-[node name="Container" type="BoxContainer" parent="HBoxContainer" unique_id=2072162032]
+[node name="ButtonRight" type="Button" parent="VBoxContainer/HBoxContainer2" unique_id=2006737334]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+icon = ExtResource("3_fli7v")
+flat = true
 
-[node name="ButtonRight" type="Button" parent="HBoxContainer" unique_id=1339747060]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=2143832837]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="ButtonLeft" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=636023276]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+icon = ExtResource("2_g2g4n")
+flat = true
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer" unique_id=1631177617]
+layout_mode = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_right = 200
+
+[node name="ButtonRight" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=1339747060]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -61,5 +85,11 @@ position = Vector2(576, 320)
 scale = Vector2(0.62109375, 0.62109375)
 texture = ExtResource("1_nnusm")
 
-[connection signal="pressed" from="HBoxContainer/ButtonLeft" to="." method="_on_button_left_pressed"]
-[connection signal="pressed" from="HBoxContainer/ButtonRight" to="." method="_on_button_right_pressed"]
+[node name="ChrAccessory" type="Sprite2D" parent="." unique_id=286053626]
+position = Vector2(604, 111)
+scale = Vector2(0.545, 0.545)
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/ButtonLeft" to="." method="_on_acessory_button_left_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/ButtonRight" to="." method="_on_accessory_button_right_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonLeft" to="." method="_on_button_left_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonRight" to="." method="_on_button_right_pressed"]
