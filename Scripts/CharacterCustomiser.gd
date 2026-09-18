@@ -34,6 +34,7 @@ func _on_button_right_pressed() -> void:
 	_set_materials()
 
 func _set_materials():
-	$ChrBody.material.set("shader_parameter/my_colour", CharacterManager.colours[bodyColour])
+	var charBodyColour = CharacterManager.colours.get(bodyColour)
+	$ChrBody.material.set("shader_parameter/my_colour", Vector4(charBodyColour.r, charBodyColour.g, charBodyColour.b, 1.0))
 	print(CharacterManager.colours[bodyColour])
 	pass
