@@ -28,15 +28,30 @@ func _input(event):
 		move_forward()
 	if event.is_action_pressed("backward"):
 		move_backward()
+	if event.is_action_pressed('rand'):
+		move_rand_steps()
 
 func move_forward():
 	if playerPiece.board_position < spaceMarkers.size()-1 and playerPiece.moveSprite == false:
 		playerPiece.board_position = playerPiece.board_position + 1
-		playerPiece.move_on_board(spaceMarkers[playerPiece.board_position].global_position)
+		playerPiece.init_move_on_board(spaceMarkers[playerPiece.board_position].global_position)
 	pass
 	
 func move_backward():
 	if playerPiece.board_position >0 and playerPiece.moveSprite == false:
 		playerPiece.board_position = playerPiece.board_position - 1
-		playerPiece.move_on_board(spaceMarkers[playerPiece.board_position].global_position)
+		playerPiece.init_move_on_board(spaceMarkers[playerPiece.board_position].global_position)
+	pass
+	
+func move_rand_steps():
+	if playerPiece.moveSteps == false:
+		var spaces = randi_range(1,6)
+		print(spaces)
+		var steps : Array[Vector3]
+		for i in range(0, spaces):
+			if playerPiece.board_position + i <= spaceMarkers.size()-1: 
+				steps.append(spaceMarkers[playerPiece.board_position + i].global_position)
+		playerPiece.board_position += steps.size()
+		if steps.size() > 0:
+			playerPiece.init_move_steps(true, steps, spaceMarkers.size()-1)
 	pass
